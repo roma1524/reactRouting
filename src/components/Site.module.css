@@ -34,3 +34,18 @@
     text-align: center;
     color: white;
 }
+
+.navBar {
+    list-style: none;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #282c34;
+}
+
+
+.activeNavLink {
+    color: #7fb8f1;
+    text-decoration: underline;
+}
