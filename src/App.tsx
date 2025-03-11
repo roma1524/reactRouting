@@ -1,13 +1,21 @@
 import React from 'react';
-// @ts-ignore
-import styles from "./components/Site.module.css";
-import {PageOne} from "./components/pages/PageOne";
-import {PageTwo} from "./components/pages/PageTwo";
-import {PageThree} from "./components/pages/PageThree";
-import {Navigate, NavLink, Routes} from "react-router-dom";
-import { Route } from 'react-router-dom';
+import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import {Error404} from "./components/pages/Error404";
 
+
+// @ts-ignore
+import styles from "./components/Site.module.css";
+import {S} from './components/pages/_styles';
+import {ADIDAS} from "./components/pages/PageOne";
+import {PUMA} from "./components/pages/PageTwo";
+import {ABIBAS} from "./components/pages/PageThree";
+
+
+const PATH = {
+    PAGE1: '/page1',
+    PAGE2: '/page2',
+    PAGE3: '/page3',
+} as const;
 
 function App() {
     return (
@@ -15,22 +23,20 @@ function App() {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <ul className={styles.navBar}>
-                        <li><NavLink to="/page1" className={({isActive}) => (isActive ? styles.activeNavLink : styles.navLink)}>Page 1</NavLink></li>
-                        <li><NavLink to="/page2" className={({isActive}) => (isActive ? styles.activeNavLink : styles.navLink)}>Page 2</NavLink></li>
-                        <li><NavLink to="/page3" className={({isActive}) => (isActive ? styles.activeNavLink : styles.navLink)}>Page 3</NavLink></li>
-                    </ul>
+                    <S.NavWrapper><NavLink to={PATH.PAGE1}>ADIDAS</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>PUMA</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE3}>ABIBAS</NavLink></S.NavWrapper>
+                    <a href="page3">page3 HTML</a>
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path="/" element={<Navigate to={'/page1'}/>}/>
-                        <Route path="/page1" element={<PageOne/>}/>
+                        <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
 
-                        <Route path="/page2" element={<PageTwo/>}/>
-                        <Route path="/page3" element={<PageThree/>}/>
+                        <Route path={PATH.PAGE1} element={<ADIDAS/>}/>
+                        <Route path={PATH.PAGE2} element={<PUMA/>}/>
+                        <Route path={PATH.PAGE3} element={<ABIBAS/>}/>
 
-                        <Route path="/error404" element={<Error404/>}/>
-                        <Route path="/*" element={<Navigate to={'/error404'}/>}/>
+                        <Route path={'/*'} element={<Error404/>}/>
                     </Routes>
                 </div>
             </div>
@@ -39,5 +45,5 @@ function App() {
     );
 }
 
-
 export default App;
+
