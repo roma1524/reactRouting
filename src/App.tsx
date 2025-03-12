@@ -1,23 +1,29 @@
 import React from 'react';
-import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
+import {Navigate, NavLink, Route, Routes, useParams} from 'react-router-dom';
 import {Error404} from "./components/pages/Error404";
 
 
 // @ts-ignore
 import styles from "./components/Site.module.css";
 import {S} from './components/pages/_styles';
-import {ADIDAS} from "./components/pages/PageOne";
-import {PUMA} from "./components/pages/PageTwo";
-import {ABIBAS} from "./components/pages/PageThree";
+import {ADIDAS} from "./components/pages/ADIDAS";
+import {PUMA} from "./components/pages/PUMA";
+import {ABIBAS} from "./components/pages/ABIBAS";
+import {Model} from "./components/pages/Model";
 
 
-const PATH = {
-    PAGE1: '/page1',
-    PAGE2: '/page2',
-    PAGE3: '/page3',
+export const PATH = {
+    PAGE1: '/adidas',
+    PAGE2: '/puma',
+    PAGE3: '/abibas',
+    PAGE4: '/adidas/model',
+
 } as const;
 
 function App() {
+
+    // const {id} = useParams();
+
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
@@ -30,11 +36,12 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
+                        <Route path={'/'} element={<Navigate to={'/adidas'}/>}/>
 
                         <Route path={PATH.PAGE1} element={<ADIDAS/>}/>
                         <Route path={PATH.PAGE2} element={<PUMA/>}/>
                         <Route path={PATH.PAGE3} element={<ABIBAS/>}/>
+                        <Route path='/adidas/:id' element={<Model/>}/>
 
                         <Route path={'/*'} element={<Error404/>}/>
                     </Routes>
