@@ -16,13 +16,9 @@ export const PATH = {
     PAGE1: '/adidas',
     PAGE2: '/puma',
     PAGE3: '/abibas',
-    PAGE4: '/adidas/model',
-
 } as const;
 
 function App() {
-
-    // const {id} = useParams();
 
     return (
         <div>
@@ -41,7 +37,7 @@ function App() {
                         <Route path={PATH.PAGE1} element={<ADIDAS/>}/>
                         <Route path={PATH.PAGE2} element={<PUMA/>}/>
                         <Route path={PATH.PAGE3} element={<ABIBAS/>}/>
-                        <Route path='/adidas/:id' element={<Model/>}/>
+                        <Route path='/:model/:id' element={<Model/>}/>
 
                         <Route path={'/*'} element={<Error404/>}/>
                     </Routes>
