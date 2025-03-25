@@ -10,6 +10,7 @@ import {ADIDAS} from "./components/pages/ADIDAS";
 import {PUMA} from "./components/pages/PUMA";
 import {ABIBAS} from "./components/pages/ABIBAS";
 import {Model} from "./components/pages/Model";
+import {Prices} from "./components/pages/Prices";
 
 
 export const PATH = {
@@ -17,6 +18,7 @@ export const PATH = {
     PAGE2: '/puma',
     PAGE3: '/abibas',
     PAGE4: '/adidas/model',
+    PAGE5: '/price',
 
 } as const;
 
@@ -32,12 +34,14 @@ function App() {
                     <S.NavWrapper><NavLink to={PATH.PAGE1}>ADIDAS</NavLink></S.NavWrapper>
                     <S.NavWrapper><NavLink to={PATH.PAGE2}>PUMA</NavLink></S.NavWrapper>
                     <S.NavWrapper><NavLink to={PATH.PAGE3}>ABIBAS</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE5}>For OPT</NavLink></S.NavWrapper>
                     <a href="page3">page3 HTML</a>
                 </div>
                 <div className={styles.content}>
                     <Routes>
                         <Route path={'/'} element={<Navigate to={'/adidas'}/>}/>
 
+                        <Route path={PATH.PAGE5} element={<Prices/>}/>
                         <Route path={PATH.PAGE1} element={<ADIDAS/>}/>
                         <Route path={PATH.PAGE2} element={<PUMA/>}/>
                         <Route path={PATH.PAGE3} element={<ABIBAS/>}/>
