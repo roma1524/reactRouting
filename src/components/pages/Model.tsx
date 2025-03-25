@@ -1,13 +1,23 @@
 import {adidasArr, AdidasItem} from "./ADIDAS";
 import {useParams} from "react-router-dom";
 import {Error404} from "./Error404";
+import {pumaArr, PumaItem} from './PUMA';
+
+type CommonType = {
+    [key: string]: (PumaItem[] | AdidasItem[])
+}
+
+const commonObj: CommonType = {
+    puma: pumaArr,
+    adidas: adidasArr,
+}
 
 export const Model = () => {
 
-    const params = useParams()
+    const {model, id} = useParams()
 
     const createModel = (arg: string) => {
-        const currObj = adidasArr.find(el => el.id === arg)
+        const currObj = model ? commonObj[model].find(el => el.id === arg) : null;
         if (currObj) {
             return (
                 <div style={{display: "flex", alignItems: 'center', flexDirection: 'column'}}>
@@ -25,7 +35,7 @@ export const Model = () => {
 
     return (
         <>
-            {params.id && createModel(params.id) }
+            {id && createModel(id) }
         </>
     )
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 // @ts-ignore
-import adidasModel1 from './../../assets/AdiFOM_TRXN_Shoes_Black_IG7453_01_standard.webp'
+import adidasModel1 from '../../assets/adidas/AdiFOM_TRXN_Shoes_Black_IG7453_01_standard.webp'
 // @ts-ignore
-import adidasModel2 from './../../assets/Superstar_XLG_Shoes_Black_IG9777_01_standard.webp'
+import adidasModel2 from '../../assets/adidas/Superstar_XLG_Shoes_Black_IG9777_01_standard.webp'
 // @ts-ignore
-import adidasModel3 from './../../assets/PostMove_Mid_Cloudfoam_Super_Lifestyle_Basketball_Mid_Classic_Shoes_Black_GY7163_01_standard.webp'
-import {Link} from "react-router-dom";
+import adidasModel3 from '../../assets/adidas/PostMove_Mid_Cloudfoam_Super_Lifestyle_Basketball_Mid_Classic_Shoes_Black_GY7163_01_standard.webp'
+import {Link, useParams} from "react-router-dom";
 
 export type AdidasItem = {
     model: string;
@@ -39,6 +39,8 @@ export const adidasArr: AdidasItem[] = [
 ]
 
 export const ADIDAS = () => {
+
+
 
     return (
         <div>
