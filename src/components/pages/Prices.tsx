@@ -49,8 +49,6 @@ export const Prices = (props: Props) => {
         }
     }, [searchParams]);
 
-    console.log(searchParams.get('onSale'));
-
     function handleOnSale() {
         setSearchParams({onSale: 'true'})
     }
